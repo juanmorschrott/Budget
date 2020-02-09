@@ -1,0 +1,82 @@
+[
+    {
+        "id": "001-11",
+        "parent_id": null,
+        "name": "Construcción",
+        "normalized_name": "construccion",
+        "description": "Casas, Edificios, Piscinas...",
+        "child_count": 7,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-2",
+        "parent_id": null,
+        "name": "Reformas",
+        "normalized_name": "reformas",
+        "description": "Baños, Cocinas, Comunidades...",
+        "child_count": 10,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-10",
+        "parent_id": null,
+        "name": "Mudanzas",
+        "normalized_name": "mudanzas",
+        "description": "Viviendas, Oficinas, Locales...",
+        "child_count": 3,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-1",
+        "parent_id": null,
+        "name": "Técnicos",
+        "normalized_name": "tecnicos",
+        "description": "Arquitectos, Licencias, Decoradores...",
+        "child_count": 12,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-4",
+        "parent_id": null,
+        "name": "Obras Menores",
+        "normalized_name": "obras-menores",
+        "description": "Albañiles, Carpinteros, Pintores...",
+        "child_count": 24,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-5",
+        "parent_id": null,
+        "name": "Instaladores",
+        "normalized_name": "instaladores",
+        "description": "Ascensores, Calefacción, Electricistas...",
+        "child_count": 15,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-6",
+        "parent_id": null,
+        "name": "Mantenimiento",
+        "normalized_name": "mantenimiento",
+        "description": "Jardineros, Limpieza, Manitas...",
+        "child_count": 9,
+        "children": null,
+        "icon": null
+    },
+    {
+        "id": "001-7",
+        "parent_id": null,
+        "name": "Tiendas",
+        "normalized_name": "tiendas",
+        "description": "Maquinaria, Materiales, Decoración...",
+        "child_count": 1,
+        "children": null,
+        "icon": null
+    }
+]
