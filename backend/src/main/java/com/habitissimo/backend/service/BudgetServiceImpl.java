@@ -95,7 +95,12 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public Budget suggestCategory(Long id) {
+    public Budget suggestCategory(BudgetDTO budgetDTO) {
+        if (budgetDTO.getCategory() != null && !budgetDTO.getCategory().isEmpty()) {
+            String[] tokens = budgetDTO.getCategory().split(" ");
+
+        }
+
         return null;
     }
 

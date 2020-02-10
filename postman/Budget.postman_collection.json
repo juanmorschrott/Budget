@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "6a9224b0-6322-4c2c-8a9e-4aa6e28fb54a",
+		"name": "Budget",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Budgets",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/budgets",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"budgets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All USers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Budget",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"some description\",\n    \"estimatedDate\": \"\",\n    \"category\": \"select\",\n    \"subCategory\": \"select\",\n    \"pricePreference\": \"\",\n    \"name\": \"pepe\",\n    \"email\": \"a\",\n    \"phone\": \"321478954\",\n    \"address\": \"some address\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/budgets",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"budgets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish Budget",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"some title\",\n    \"description\": \"something\",\n    \"estimatedDate\": \"\",\n    \"category\": \"select\",\n    \"subCategory\": \"select\",\n    \"pricePreference\": \"\",\n    \"name\": \"pepe\",\n    \"email\": \"test@a.com\",\n    \"phone\": \"321478954\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/budgets/1/publish",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"budgets",
+						"1",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Discard Budget",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"some title\",\n    \"description\": \"something\",\n    \"estimatedDate\": \"\",\n    \"category\": \"select\",\n    \"subCategory\": \"select\",\n    \"pricePreference\": \"\",\n    \"name\": \"pepe\",\n    \"email\": \"test@a.com\",\n    \"phone\": \"321478954\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/budgets/1/discard",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"budgets",
+						"1",
+						"discard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Budget",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"some title\",\n    \"description\": \"something\",\n    \"estimatedDate\": \"\",\n    \"category\": \"select\",\n    \"subCategory\": \"select\",\n    \"pricePreference\": \"\",\n    \"name\": \"pepe\",\n    \"email\": \"test@a.com\",\n    \"phone\": \"321478954\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/v1/budgets/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"budgets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

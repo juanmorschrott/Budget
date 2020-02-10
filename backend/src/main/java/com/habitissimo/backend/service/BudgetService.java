@@ -17,6 +17,6 @@ public interface BudgetService {
 
     Budget discardBudget(Long id, BudgetDTO budgetDTO) throws Exception;
 
-    Budget suggestCategory(Long id);
+    Budget suggestCategory(BudgetDTO budgetDTO);
 
 }
