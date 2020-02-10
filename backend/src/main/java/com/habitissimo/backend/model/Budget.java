@@ -1,12 +1,13 @@
 package com.habitissimo.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "Budget")
+@Table(name = "budget")
 public class Budget {
 
     @Id
@@ -22,7 +23,7 @@ public class Budget {
     private State state;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
 }

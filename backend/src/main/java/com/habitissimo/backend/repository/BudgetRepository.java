@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface BudgetRepository extends CrudRepository<Budget, Long> {
-    Budget findByUserEmail(String email);
     Optional<Budget> findByIdAndUserId(Long id, Long userId);
 }

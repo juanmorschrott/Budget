@@ -39,12 +39,14 @@ public class BudgetServiceImpl implements BudgetService {
         user.setPhone(budgetDTO.getPhone());
         user.setAddress(budgetDTO.getAddress());
 
-        userRepository.save(user);
+        user = userRepository.save(user);
 
         Budget budget = new Budget();
         budget.setTitle(budgetDTO.getTitle());
         budget.setDescription(budgetDTO.getDescription());
         budget.setCategory(budgetDTO.getCategory());
+        budget.setState(State.PENDING);
+        budget.setUser(user);
 
         return budgetRepository.save(budget);
 

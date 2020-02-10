@@ -1,10 +1,8 @@
 package com.habitissimo.backend.controller;
 
 import com.habitissimo.backend.dto.BudgetDTO;
-import com.habitissimo.backend.exception.ResourceNotFoundException;
 import com.habitissimo.backend.model.Budget;
 import com.habitissimo.backend.repository.BudgetRepository;
-import com.habitissimo.backend.repository.UserRepository;
 import com.habitissimo.backend.service.BudgetServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +18,6 @@ public class BudgetController {
 
     @Autowired
     private BudgetRepository budgetRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private BudgetServiceImpl budgetService;
@@ -54,15 +49,6 @@ public class BudgetController {
     @PutMapping("/{id}")
     public Budget updateBudget(@PathVariable Long id, @RequestBody BudgetDTO budgetDTO) throws Exception {
         return budgetService.updateBudget(id, budgetDTO);
-    }
-
-    @DeleteMapping("/{budgetId}/users/{userId}")
-    public ResponseEntity<?> deleteBudget(@PathVariable (value = "budgetId") Long budgetId,
-                                           @PathVariable (value = "userId") Long userId) {
-        return budgetRepository.findByIdAndUserId(budgetId, userId).map(budget -> {
-            budgetRepository.delete(budget);
-            return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException("Budget not found with id: " + budgetId + " and userId: " + userId));
     }
 
 }
