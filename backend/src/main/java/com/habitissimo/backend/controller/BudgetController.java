@@ -55,19 +55,25 @@ public class BudgetController {
     @ApiOperation(value = "Suggest Category", response = ResponseEntity.class)
     @PostMapping(value = "/suggest", consumes = "application/json", produces = "application/json")
     public void suggestCategory( @Valid  @RequestBody BudgetDTO budgetDTO) {
-        // I would implement a call to an ElasticSearch service:
+        // 1. We need an ElastiSearch service where we can add the needed indexes.
+        // 2. All these indexes can be filled with the information included in every Budget creation request.
+        //    Every time somebody adds a Description and selects a Category, we can associate these words
+        //    to a category e.g.:
+        //        Category:    Reforma baño
+        //        Description: Quiero quitar la bañera y poner una mampara con un plato de ducha
+        // 3. When our indexes have enough data, we can make use of a full text call:
         // GET /habitissimo/categories/_search
         // {
         //      "query": {
-        //          "constant_score": {
-        //              "filter": {
-        //                  "term": {
-        //                      "category_values": “quiero quitar la bañera y poner una mampara con un plato de ducha"
-        //                  }
+        //          "match": {
+        //              "category": {
+        //                  "query": “Quiero quitar la bañera y poner una mampara con un plato de ducha",
+        //                  "minimum_should_match": 75%
         //              }
         //          }
         //      }
         //}
+        //4. If a minimum match percentage is accomplished, then we can return the recommended category.
     }
 
 }
