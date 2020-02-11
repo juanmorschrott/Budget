@@ -9,7 +9,9 @@ app.use(cors())
 const categories = require('./categories.json');
 const locations = require('./locations.json');
 
-
+/**
+ * Get Category List
+ */
 app.get('/category/list/', function (req, res, next) {
   axios
     .get('https://api.habitissimo.es/category/list')
