@@ -44,9 +44,9 @@ cd frontend
 npm run serve
 ```
 
-### mocks
+### proxy
 
-Node js server interface
+Node js proxy server interface
 
 - port: 8082
 
