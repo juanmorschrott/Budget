@@ -202,10 +202,10 @@
     <!-- Buttons -->
     <div class="field is-grouped">
       <div class="control">
-        <button @click="previousTab()" class="button is-primary">Previous</button>
+        <button @click="previousTab()" class="button is-primary" v-if="step > 1">Previous</button>
       </div>
       <div class="control">
-        <button @click="nextTab()" class="button is-link">Next</button>
+        <button @click="nextTab()" class="button is-link" v-if="step < 3">Next</button>
       </div>
       <div class="control">
         <button @click="submit()" class="button is-success" v-if="step === 3">Submit</button>

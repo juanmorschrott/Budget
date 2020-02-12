@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <form-wizard></form-wizard>
+    <multi-step-form></multi-step-form>
   </div>
 </template>
 
 <script>
 import "bulma/css/bulma.css";
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
-import FormWizard from "./components/FormWizard.vue";
+import MultiStepForm from "./components/MultiStepForm.vue";
 
 export default {
   name: 'App',
   components: {
-    FormWizard,
+    MultiStepForm,
   }
 }
 </script>

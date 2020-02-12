@@ -20,7 +20,7 @@ BASE-URL:   http://localhost:8080/api/v1/budgets
 
 |OPERATION|METHOD|URI|
 |---|---|---|
-|CREATE|GET|http://localhost:8080/api/v1/budgets|
+|CREATE|POST|http://localhost:8080/api/v1/budgets|
 |READ|GET|http://localhost:8080/api/v1/budgets/{id}|
 |UPDATE|PUT|http://localhost:8080/api/v1/budgets|
 |DELETE|DELETE|http://localhost:8080/api/v1/budgets/{id}|
