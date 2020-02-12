@@ -16,6 +16,18 @@ Backend Spring Boot server
 cd backend
 mvn spring-boot:run
 ```
+BASE-URL:   http://localhost:8080/api/v1/budgets
+
+|OPERATION|METHOD|URI|
+|---|---|---|
+|CREATE|GET|http://localhost:8080/api/v1/budgets|
+|READ|GET|http://localhost:8080/api/v1/budgets/{id}|
+|UPDATE|PUT|http://localhost:8080/api/v1/budgets|
+|DELETE|DELETE|http://localhost:8080/api/v1/budgets/{id}|
+
+API Documentation:
+
+[http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 
 ### db
 
@@ -36,7 +48,7 @@ npm run serve
 
 Node js server interface
 
-- port: 3000
+- port: 8082
 
 ```
 cd mocks

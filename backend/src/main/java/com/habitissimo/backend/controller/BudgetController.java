@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping(path="/api/v1/budgets")
 public class BudgetController {
 
@@ -23,30 +23,31 @@ public class BudgetController {
     @Autowired
     private BudgetServiceImpl budgetService;
 
-    @ApiOperation(value = "View a list of available Budgets", response = ResponseEntity.class)
+    @ApiOperation(value = "List all Budgets", response = List.class)
     @GetMapping
     public List<Budget> getAllBudgets() {
         return (List<Budget>) budgetRepository.findAll();
     }
 
-    @ApiOperation(value = "Creates a new Budget", response = ResponseEntity.class)
+    @ApiOperation(value = "Creates a new Budget", response = Budget.class)
     @PostMapping(consumes = "application/json", produces = "application/json")
     public Budget createBudget(@Valid @RequestBody BudgetDTO budgetDTO) {
         return budgetService.createBudget(budgetDTO);
     }
 
-    @ApiOperation(value = "Set Budget as PUBLISHED", response = ResponseEntity.class)
+    @ApiOperation(value = "Set Budget as PUBLISHED", response = Budget.class)
     @PostMapping(value = "/{id}/publish", consumes = "application/json", produces = "application/json")
     public Budget publishBudget(@PathVariable Long id, @Valid @RequestBody BudgetDTO budgetDTO) throws Exception {
         return budgetService.publishPendingBudget(id, budgetDTO);
     }
 
-    @ApiOperation(value = "Set Budget as DISCARTED", response = ResponseEntity.class)
+    @ApiOperation(value = "Set Budget as DISCARDED", response = Budget.class)
     @PostMapping(value = "/{id}/discard", consumes = "application/json", produces = "application/json")
     public Budget discardBudget(@PathVariable Long id, @Valid  @RequestBody BudgetDTO budgetDTO) throws Exception {
         return budgetService.discardBudget(id, budgetDTO);
     }
 
+    @ApiOperation(value = "Update budget", response = Budget.class)
     @PutMapping("/{id}")
     public Budget updateBudget(@PathVariable Long id, @Valid  @RequestBody BudgetDTO budgetDTO) throws Exception {
         return budgetService.updateBudget(id, budgetDTO);

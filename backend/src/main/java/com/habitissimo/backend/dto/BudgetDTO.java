@@ -29,7 +29,6 @@ public class BudgetDTO {
     @NotNull
     private String phone;
 
-    @NotNull
     private String address;
 
     private String date;
