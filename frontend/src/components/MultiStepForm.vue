@@ -4,19 +4,19 @@
       <li class="steps-segment" :class="{ 'is-active': step === 1}">
         <span class="steps-marker"></span>
         <div class="steps-content">
-          <p class="is-size-4" v-if="step === 1">Step:{{step}}</p>
+          <p class="is-size-4" v-if="step === 1">Step: {{step}}</p>
         </div>
       </li>
       <li class="steps-segment" :class="{ 'is-active': step === 2}">
         <span class="steps-marker"></span>
         <div class="steps-content">
-          <p class="is-size-4" v-if="step === 2">Step:{{step}}</p>
+          <p class="is-size-4" v-if="step === 2">Step: {{step}}</p>
         </div>
       </li>
       <li class="steps-segment" :class="{ 'is-active': step === 3}">
         <span class="steps-marker"></span>
         <div class="steps-content">
-          <p class="is-size-4" v-if="step === 3">Step:{{step}}</p>
+          <p class="is-size-4" v-if="step === 3">Step: {{step}}</p>
         </div>
       </li>
     </ul>
@@ -202,13 +202,29 @@
     <!-- Buttons -->
     <div class="field is-grouped">
       <div class="control">
-        <button @click="previousTab()" class="button is-primary" v-if="step > 1">Previous</button>
+        <button @click="previousTab()" class="button is-primary" :disabled="step <= 1">Previous</button>
       </div>
       <div class="control">
-        <button @click="nextTab()" class="button is-link" v-if="step < 3">Next</button>
+        <button @click="nextTab()" class="button is-link" :disabled="step < 1 || step >= 3">Next</button>
       </div>
       <div class="control">
-        <button @click="submit()" class="button is-success" v-if="step === 3">Submit</button>
+        <button @click="submit()" class="button is-success" :disabled="step !== 3">Submit</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" :class="{ 'is-active': showModal }">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Info:</p>
+        </header>
+        <section class="modal-card-body">
+          <p>{{modalBody}}</p>
+        </section>
+        <footer class="modal-card-foot">
+          <button @click="closeModal()" class="button">Close</button>
+        </footer>
       </div>
     </div>
   </div>
@@ -223,12 +239,7 @@ import BudgetService from "../services/BudgetService.js";
 Vue.use(VeeValidate);
 
 export default {
-  name: "app",
-
-  props: {
-    info: {},
-    selected: { default: false }
-  },
+  name: "MultiStepForm",
 
   data() {
     return {
@@ -249,7 +260,9 @@ export default {
         name: "",
         email: "",
         phone: ""
-      }
+      },
+      showModal: false,
+      modalBody: ""
     };
   },
 
@@ -258,7 +271,10 @@ export default {
     this.tabs = this.$children;
     axios
       .get("http://localhost:8082/category/list")
-      .then(response => (this.categories = response.data));
+      .then(response => (this.categories = response.data))
+      .catch(error => {
+        this.showModal(error);
+      });
   },
 
   mounted() {
@@ -292,11 +308,28 @@ export default {
         .validate("step" + this.totalTabs + ".*")
         .then(valid => {
           if (valid) {
-            BudgetService.createBudget(this.budget).then(function(response) {
-              console.log(response);
-            });
+            BudgetService.createBudget(this.budget)
+              .then(response => {
+                console.log(response);
+                if (response.data != null) {
+                  this.openModal("Congrats!\n" + response.data);
+                }
+              })
+              .catch(error => {
+                console.log(error);
+                this.openModal(error);
+              });
           }
         });
+    },
+
+    openModal(text) {
+      this.modalBody = text;
+      this.showModal = true;
+    },
+
+    closeModal() {
+      this.showModal = false;
     }
   }
 };

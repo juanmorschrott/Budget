@@ -20,7 +20,11 @@ export default {
 <style lang="scss">
 @import "./../node_modules/bulma/bulma.sass";
 @import "./../node_modules/bulma-steps-component/bulma-steps.sass";
-@import "./../node_modules/bulma-calendar/dist/css/bulma-calendar.min.css";
+@import './../node_modules/bulma-calendar/dist/css/bulma-calendar.min.css';
+
+html {  
+  background-color: #ededed;
+}
 
 body {
   padding: 40px;
