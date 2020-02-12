@@ -248,9 +248,6 @@ export default {
       categories: [],
       hasCategory: true,
       subCategories: [],
-      tabs: [],
-      currentActive: 0,
-      totalTabs: 0,
       budget: {
         description: "",
         estimatedDate: "",
@@ -288,7 +285,7 @@ export default {
 
     nextTab() {
       this.$root.$validator
-        .validate("step" + (this.currentActive + 1) + ".*")
+        .validate("step" + (this.step) + ".*")
         .then(valid => {
           if (valid) {
             this.step++;
@@ -305,7 +302,7 @@ export default {
 
     submit() {
       this.$root.$validator
-        .validate("step" + this.totalTabs + ".*")
+        .validate("step" + this.step + ".*")
         .then(valid => {
           if (valid) {
             BudgetService.createBudget(this.budget)
