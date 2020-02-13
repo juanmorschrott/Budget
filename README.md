@@ -4,7 +4,7 @@ A Set of applications for Budgets creation
 
 ### Diagram
 
-![alt text](http://github.com/juanmorschrott/Budget/information/img/Diagram.png)
+![Diagram](https://github.com/juanmorschrott/Budget/blob/master/information/img/Diagram.png)
 
 ### app
 
