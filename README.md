@@ -1,6 +1,10 @@
 # Budget Project
 
-Set of applications for Budgets creation
+A Set of applications for Budgets creation
+
+### Diagram
+
+![alt text](http://github.com/juanmorschrott/Budget/information/img/Diagram.png)
 
 ### app
 
@@ -13,7 +17,6 @@ Backend Spring Boot server
 - port: 8081
 
 ```
-cd backend
 mvn spring-boot:run
 ```
 BASE-URL:   http://localhost:8080/api/v1/budgets
@@ -28,10 +31,6 @@ BASE-URL:   http://localhost:8080/api/v1/budgets
 API Documentation:
 
 [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
-
-### db
-
-Database information
 
 ### frontend
 
@@ -55,6 +54,9 @@ cd mocks
 node ./App.js
 ```
 
-### postman
+### information
 
-Postman collection
+Project information:
+ - db: Database Information
+ - postman: Requests Collection
+ - img: Project Diagram

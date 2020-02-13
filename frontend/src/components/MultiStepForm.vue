@@ -244,7 +244,6 @@ export default {
   data() {
     return {
       step: 1,
-      isActive: false,
       categories: [],
       hasCategory: true,
       subCategories: [],
@@ -264,18 +263,12 @@ export default {
   },
 
   created() {
-    this.isActive = this.selected;
-    this.tabs = this.$children;
     axios
       .get("http://localhost:8082/category/list")
       .then(response => (this.categories = response.data))
       .catch(error => {
         this.showModal(error);
       });
-  },
-
-  mounted() {
-    this.totalTabs = this.tabs.length;
   },
 
   methods: {
@@ -309,7 +302,7 @@ export default {
               .then(response => {
                 console.log(response);
                 if (response.data != null) {
-                  this.openModal("Congrats!\n" + response.data);
+                  this.openModal("Congrats! Your Budget has been created: \n" + JSON.stringify(response.data));
                 }
               })
               .catch(error => {
