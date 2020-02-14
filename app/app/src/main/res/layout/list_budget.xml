@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvNameCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Name - Subcategory" />
 
     <TextView
-        android:id="@+id/tvCategory"
+        android:id="@+id/tvPhoneLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_alignRight="@+id/tvName"
-        android:layout_alignEnd="@+id/tvName" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvNameCategory"
+        android:text="Phone: (Location)" />
 
-    <TextView
-        android:id="@+id/tvPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/tvName" />
-
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_alignRight="@+id/tvPhone"
-        android:layout_alignEnd="@+id/tvPhone" />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/tvPhone" />
+        android:layout_below="@+id/tvPhoneLocation"
+        android:text="Email:"/>
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/tvLocation" />
+        android:layout_below="@+id/tvEmail"
+        android:text="Description:"/>
 
 </RelativeLayout>

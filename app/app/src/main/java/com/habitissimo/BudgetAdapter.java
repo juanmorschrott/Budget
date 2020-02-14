@@ -43,20 +43,16 @@ public class BudgetAdapter extends BaseAdapter {
             rowView = inflater.inflate(R.layout.list_budget, parent, false);
         }
 
-        TextView tvName = rowView.findViewById(R.id.tvName);
-        TextView tvCategory = rowView.findViewById(R.id.tvCategory);
-        TextView tvPhone = rowView.findViewById(R.id.tvPhone);
-        TextView tvEmail = rowView.findViewById(R.id.tvEmail);
-        TextView tvLocation = rowView.findViewById(R.id.tvLocation);
-        TextView tvDescription = rowView.findViewById(R.id.tvDescription);
+        TextView tvNameCategory = (TextView) rowView.findViewById(R.id.tvNameCategory);
+        TextView tvPhoneLocation = (TextView) rowView.findViewById(R.id.tvPhoneLocation);
+        TextView tvEmail = (TextView) rowView.findViewById(R.id.tvEmail);
+        TextView tvDescription = (TextView) rowView.findViewById(R.id.tvDescription);
 
         Budget budget = this.budgets.get(position);
-        tvName.setText(budget.getName());
-        tvCategory.setText(budget.getSubCategory());
-        tvPhone.setText(budget.getPhone());
-        tvLocation.setText(null);
-        tvEmail.setText(budget.getEmail());
-        tvDescription.setText(budget.getDescription());
+        tvNameCategory.setText(budget.getName() + " - " + budget.getSubCategory());
+        tvPhoneLocation.setText("Teléfono: " + budget.getPhone() + "(" + budget.getLocation() + ")");
+        tvEmail.setText("Email: " + budget.getEmail());
+        tvDescription.setText("Descripción: " + budget.getDescription());
 
         return rowView;
     }
