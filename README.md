@@ -17,6 +17,7 @@ Backend Spring Boot server
 - port: 8081
 
 ```
+mvn clean install
 mvn spring-boot:run
 ```
 BASE-URL:   http://localhost:8080/api/v1/budgets
@@ -40,6 +41,7 @@ Vuejs frontend application
 
 ```
 cd frontend
+npm install
 npm run serve
 ```
 
@@ -50,7 +52,8 @@ Node js proxy server interface
 - port: 8082
 
 ```
-cd mocks
+cd proxy
+npm install
 node ./App.js
 ```
 
