@@ -1,5 +1,10 @@
 FROM mysql:5
 
-ADD habitissimo.sql /tmp/habitissimo.sql
-ADD init_db.sh /tmp/init_db.sh
-RUN /tmp/init_db.sh
+
+ENV MYSQL_USER habitissimo
+ENV MYSQL_PASSWORD habitissimo
+ENV MYSQL_DATABASE habitissimo
+ENV MYSQL_ROOT_PASSWORD ghdlsaf734trpg
+
+ADD habitissimo.sql /docker-entrypoint-initdb.d/
+
