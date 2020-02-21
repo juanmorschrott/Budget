@@ -4,14 +4,10 @@ RUN apk add maven
 
 WORKDIR /app
 
-COPY pom.xml .
-
-RUN mvn dependency:copy-dependencies
-
 COPY . .
 
-RUN mvn install
+RUN mvn clean install
 
 EXPOSE 8081
 
-CMD ["mvn", "spring-boot:run"]
+ENTRYPOINT ["mvn", "spring-boot:run"]
