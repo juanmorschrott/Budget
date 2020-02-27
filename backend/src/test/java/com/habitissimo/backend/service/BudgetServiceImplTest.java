@@ -13,6 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import java.util.Optional;
 
@@ -34,6 +37,15 @@ public class BudgetServiceImplTest {
 
     private User mockUser;
     private BudgetDTO mockBudgetDTO;
+
+    @Configuration
+    @Import(BudgetServiceImpl.class)
+    static class TestConfig {
+        @Bean
+        BudgetRepository budgetRepository() {
+            return mock(BudgetRepository.class);
+        }
+    }
 
     @Before
     public void init() {
