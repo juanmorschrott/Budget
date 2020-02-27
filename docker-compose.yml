@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  proxy:
+    build:
+      context: ./proxy
+  frontend:
+    build:
+      context: ./frontend
+  database:
+    build:
+      context: ./database
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      - database
