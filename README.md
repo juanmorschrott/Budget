@@ -8,8 +8,8 @@ A Set of applications for Budgets creation
 
 ### Dependencies
 
-Java 1.8
-Node js 12.16.1
+Java >= 1.8
+Node >= 12.16.1
 
 ### Deployment
 
@@ -17,7 +17,7 @@ You can run every service independently or if you have Docker installed in your 
 
 ```
 cd ./Budget
-./deploysh
+./deploy.sh
 ```
 
 ### app
