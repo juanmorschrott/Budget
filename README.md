@@ -6,6 +6,20 @@ A Set of applications for Budgets creation
 
 ![Diagram](https://github.com/juanmorschrott/Budget/blob/master/information/img/Diagram.png)
 
+### Dependencies
+
+Java >= 1.8
+Node >= 12.16.1
+
+### Deployment
+
+You can run every service independently or if you have Docker installed in your system, just clone the project and execute:
+
+```
+cd ./Budget
+./deploy.sh
+```
+
 ### app
 
 Android app

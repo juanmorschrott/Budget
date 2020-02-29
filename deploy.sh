@@ -14,7 +14,7 @@ docker build -t frontend-budget .
 
 # Created before the rest to pass tests
 docker run --rm -d --network $NETWORK --name mysql mysql-budget
-sleep 30
+
 cd ../backend
 docker build --network $NETWORK -t backend-budget .
 
