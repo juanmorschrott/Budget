@@ -1,6 +1,5 @@
 FROM mysql:5
 
-
 ENV MYSQL_USER habitissimo
 ENV MYSQL_PASSWORD habitissimo
 ENV MYSQL_DATABASE habitissimo

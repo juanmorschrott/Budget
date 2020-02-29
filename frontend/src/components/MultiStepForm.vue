@@ -66,13 +66,14 @@
       <div class="field">
         <label class="label">Category</label>
         <div class="control">
-          <div class="select" name="category">
+          <div class="select" name="category" style="width:100%">
             <select
               v-model="budget.category"
               v-validate="'required'"
               name="category"
               @change="onChange($event)"
               data-vv-scope="step2"
+              style="width:100%"
             >
               <option value="select">Select</option>
               <option
@@ -92,13 +93,14 @@
       <div class="field">
         <label class="label">Sub Category</label>
         <div class="control">
-          <div class="select" name="subCategory">
+          <div class="select" name="subCategory" style="width:100%">
             <select
               v-model="budget.subCategory"
               v-validate="'required'"
               name="subCategory"
               data-vv-scope="step2"
               :disabled="hasCategory"
+              style="width:100%"
             >
               <option value="select">Select</option>
               <option
@@ -118,12 +120,13 @@
       <div class="field">
         <label class="label">Price Preference</label>
         <div class="control">
-          <div class="select" name="pricePreference">
+          <div class="select" name="pricePreference" style="width:100%">
             <select
               v-model="budget.pricePreference"
               v-validate="'required'"
               name="pricePreference"
               data-vv-scope="step2"
+              style="width:100%"
             >
               <option value>Select</option>
               <option value="cheapeast">Lo más barato</option>
@@ -317,16 +320,17 @@ export default {
           localStorage.step = JSON.stringify(this.step);
           BudgetService.createBudget(this.budget)
             .then(response => {
-              console.log(response);
               if (response.data != null) {
                 this.openModal(
                   "Congrats! Your Budget has been created: \n" +
                     JSON.stringify(response.data)
                 );
+                // Empty local storage
+                localStorage.clear();
               }
             })
             .catch(error => {
-              console.log(error);
+              console.error(error);
               this.openModal(error);
             });
         }
