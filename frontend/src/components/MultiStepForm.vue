@@ -231,15 +231,15 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import VeeValidate from 'vee-validate';
-import axios from 'axios';
-import BudgetService from '../services/BudgetService.js';
+import Vue from "vue";
+import VeeValidate from "vee-validate";
+import axios from "axios";
+import BudgetService from "../services/BudgetService.js";
 
 Vue.use(VeeValidate);
 
 export default {
-  name: 'MultiStepForm',
+  name: "MultiStepForm",
 
   data() {
     return {
@@ -248,69 +248,89 @@ export default {
       hasCategory: true,
       subCategories: [],
       budget: {
-        description: '',
-        estimatedDate: '',
-        category: 'select',
-        subCategory: 'select',
-        pricePreference: '',
-        name: '',
-        email: '',
-        phone: ''
+        description: "",
+        estimatedDate: "",
+        category: "",
+        subCategory: "",
+        pricePreference: "",
+        name: "",
+        email: "",
+        phone: ""
       },
       showModal: false,
-      modalBody: ''
+      modalBody: ""
     };
+  },
+
+  watch: {
+    budget: {
+      handler(val) {
+        localStorage.budget = JSON.stringify(val);
+      },
+      deep: true
+    }
   },
 
   created() {
     axios
-      .get('http://localhost:8082/category/list')
+      .get("http://localhost:8082/category/list")
       .then(response => (this.categories = response.data))
       .catch(error => {
-        this.showModal(error);
+        this.openModal(error);
       });
+  },
+
+  mounted() {
+    if (localStorage.step) {
+      this.step = JSON.parse(localStorage.step);
+    }
+    if (localStorage.budget) {
+      this.budget = JSON.parse(localStorage.budget);
+    }
   },
 
   methods: {
     previousTab() {
       this.step--;
+      localStorage.step = JSON.stringify(this.step);
     },
 
     nextTab() {
-      this.$root.$validator
-        .validate('step' + (this.step) + '.*')
-        .then(valid => {
-          if (valid) {
-            this.step++;
-          }
-        });
+      this.$root.$validator.validate("step" + this.step + ".*").then(valid => {
+        if (valid) {
+          localStorage.step = JSON.stringify(this.step);
+          this.step++;
+        }
+      });
     },
 
     onChange(e) {
       axios
-        .get('http://localhost:8082/category/list/' + e.target.value)
+        .get("http://localhost:8082/category/list/" + e.target.value)
         .then(response => (this.subCategories = response.data))
         .then(() => (this.hasCategory = false));
     },
 
     submit() {
-      this.$root.$validator
-        .validate('step' + this.step + '.*')
-        .then(valid => {
-          if (valid) {
-            BudgetService.createBudget(this.budget)
-              .then(response => {
-                console.log(response);
-                if (response.data != null) {
-                  this.openModal('Congrats! Your Budget has been created: \n' + JSON.stringify(response.data));
-                }
-              })
-              .catch(error => {
-                console.log(error);
-                this.openModal(error);
-              });
-          }
-        });
+      this.$root.$validator.validate("step" + this.step + ".*").then(valid => {
+        if (valid) {
+          localStorage.step = JSON.stringify(this.step);
+          BudgetService.createBudget(this.budget)
+            .then(response => {
+              console.log(response);
+              if (response.data != null) {
+                this.openModal(
+                  "Congrats! Your Budget has been created: \n" +
+                    JSON.stringify(response.data)
+                );
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              this.openModal(error);
+            });
+        }
+      });
     },
 
     openModal(text) {
