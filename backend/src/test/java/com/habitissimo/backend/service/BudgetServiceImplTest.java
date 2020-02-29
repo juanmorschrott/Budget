@@ -38,15 +38,6 @@ public class BudgetServiceImplTest {
     private User mockUser;
     private BudgetDTO mockBudgetDTO;
 
-    @Configuration
-    @Import(BudgetServiceImpl.class)
-    static class TestConfig {
-        @Bean
-        BudgetRepository budgetRepository() {
-            return mock(BudgetRepository.class);
-        }
-    }
-
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
