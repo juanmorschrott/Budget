@@ -231,15 +231,15 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VeeValidate from "vee-validate";
-import axios from "axios";
-import BudgetService from "../services/BudgetService.js";
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
+import axios from 'axios';
+import BudgetService from '../services/BudgetService.js';
 
 Vue.use(VeeValidate);
 
 export default {
-  name: "MultiStepForm",
+  name: 'MultiStepForm',
 
   data() {
     return {
@@ -248,23 +248,23 @@ export default {
       hasCategory: true,
       subCategories: [],
       budget: {
-        description: "",
-        estimatedDate: "",
-        category: "select",
-        subCategory: "select",
-        pricePreference: "",
-        name: "",
-        email: "",
-        phone: ""
+        description: '',
+        estimatedDate: '',
+        category: 'select',
+        subCategory: 'select',
+        pricePreference: '',
+        name: '',
+        email: '',
+        phone: ''
       },
       showModal: false,
-      modalBody: ""
+      modalBody: ''
     };
   },
 
   created() {
     axios
-      .get("http://localhost:8082/category/list")
+      .get('http://localhost:8082/category/list')
       .then(response => (this.categories = response.data))
       .catch(error => {
         this.showModal(error);
@@ -278,7 +278,7 @@ export default {
 
     nextTab() {
       this.$root.$validator
-        .validate("step" + (this.step) + ".*")
+        .validate('step' + (this.step) + '.*')
         .then(valid => {
           if (valid) {
             this.step++;
@@ -288,21 +288,21 @@ export default {
 
     onChange(e) {
       axios
-        .get("http://localhost:8082/category/list/" + e.target.value)
+        .get('http://localhost:8082/category/list/' + e.target.value)
         .then(response => (this.subCategories = response.data))
         .then(() => (this.hasCategory = false));
     },
 
     submit() {
       this.$root.$validator
-        .validate("step" + this.step + ".*")
+        .validate('step' + this.step + '.*')
         .then(valid => {
           if (valid) {
             BudgetService.createBudget(this.budget)
               .then(response => {
                 console.log(response);
                 if (response.data != null) {
-                  this.openModal("Congrats! Your Budget has been created: \n" + JSON.stringify(response.data));
+                  this.openModal('Congrats! Your Budget has been created: \n' + JSON.stringify(response.data));
                 }
               })
               .catch(error => {
