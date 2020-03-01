@@ -17,8 +17,7 @@ You can run every service independently or if you have Docker installed in your 
 
 ```
 cd ./Budget
-chmod +x deploy.sh
-./deploy.sh
+docker-compose up
 ```
 
 ### app
