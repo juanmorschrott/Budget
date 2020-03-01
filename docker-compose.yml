@@ -14,10 +14,9 @@ services:
   database:
     build:
       context: ./database
+    container_name: mysql
   backend:
     build:
       context: ./backend
     ports:
       - "8081:8081"
-    depends_on:
-      - database
