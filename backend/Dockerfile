@@ -6,8 +6,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN mvn clean install -DskipTests
+
 EXPOSE 8081
 
-ENTRYPOINT ["/bin/sh", "entrypoint.sh"]
-
-CMD ["mvn", "spring-boot:run"]
+ENTRYPOINT ["mvn", "spring-boot:run"]
