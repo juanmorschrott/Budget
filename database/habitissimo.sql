@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS 'habitissimo';
 CREATE USER 'habitissimo'@'localhost'
   IDENTIFIED BY 'habitissimo' PASSWORD EXPIRE;
 
-GRANT ALL PRIVILEGES ON habitissimo.*  TO 'habitissimo'@'habitissimo';
+GRANT ALL PRIVILEGES ON habitissimo.*  TO 'habitissimo'@'%';
 
 FLUSH PRIVILEGES;
 
