@@ -7,8 +7,12 @@ import com.habitissimo.backend.model.User;
 import com.habitissimo.backend.repository.BudgetRepository;
 import com.habitissimo.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +26,15 @@ public class BudgetServiceImpl implements BudgetService {
     private BudgetRepository budgetRepository;
 
     @Override
-    public List<Budget> getAll(BudgetDTO budgetDTO) {
-        if (budgetDTO.getEmail() != null && !budgetDTO.getEmail().isEmpty()) {
+    public List<Budget> getAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Budget> pagedBudgets = budgetRepository.findAll(pageable);
 
+        if (pagedBudgets.hasContent()) {
+            return pagedBudgets.getContent();
+        } else {
+            return new ArrayList<Budget>();
         }
-        return null;
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.habitissimo.backend.controller;
 
 import com.habitissimo.backend.dto.BudgetDTO;
 import com.habitissimo.backend.model.Budget;
-import com.habitissimo.backend.repository.BudgetRepository;
 import com.habitissimo.backend.service.BudgetServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +17,13 @@ import java.util.List;
 public class BudgetController {
 
     @Autowired
-    private BudgetRepository budgetRepository;
-
-    @Autowired
     private BudgetServiceImpl budgetService;
 
     @ApiOperation(value = "List all Budgets", response = List.class)
     @GetMapping
-    public List<Budget> getAllBudgets() {
-        return (List<Budget>) budgetRepository.findAll();
+    public List<Budget> getAllBudgets(@RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "10") int size) {
+        return budgetService.getAll(page, size);
     }
 
     @ApiOperation(value = "Creates a new Budget", response = Budget.class)

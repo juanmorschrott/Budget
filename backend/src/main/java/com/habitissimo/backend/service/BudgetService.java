@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BudgetService {
 
-    List<Budget> getAll(BudgetDTO budgetDTO);
+    List<Budget> getAll(int page, int size);
 
     Budget createBudget(BudgetDTO budgetDTO);
 
