@@ -2,8 +2,7 @@ DROP DATABASE 'habitissimo';
 
 CREATE DATABASE IF NOT EXISTS 'habitissimo';
 
-CREATE USER 'habitissimo'@'localhost'
-  IDENTIFIED BY 'habitissimo' PASSWORD EXPIRE;
+CREATE USER 'habitissimo'@'%' IDENTIFIED BY 'habitissimo' PASSWORD EXPIRE;
 
 GRANT ALL PRIVILEGES ON habitissimo.*  TO 'habitissimo'@'%';
 
