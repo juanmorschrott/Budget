@@ -38,6 +38,11 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
+    public Budget getBudget(Long id) {
+        return budgetRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public Budget createBudget(BudgetDTO budgetDTO) {
         User user = userRepository.findByEmail(budgetDTO.getEmail());
         if (user == null) {

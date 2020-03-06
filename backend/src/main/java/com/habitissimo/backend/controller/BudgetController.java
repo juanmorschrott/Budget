@@ -26,6 +26,12 @@ public class BudgetController {
         return budgetService.getAll(page, size);
     }
 
+    @ApiOperation(value = "Get budget", response = Budget.class)
+    @GetMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    public Budget getBudget(@PathVariable Long id) throws Exception {
+        return budgetService.getBudget(id);
+    }
+
     @ApiOperation(value = "Creates a new Budget", response = Budget.class)
     @PostMapping(consumes = "application/json", produces = "application/json")
     public Budget createBudget(@Valid @RequestBody BudgetDTO budgetDTO) {
